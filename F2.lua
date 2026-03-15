@@ -6,6 +6,25 @@ local VirtualInputManager = game:GetService("VirtualInputManager")
 
 local player = Players.LocalPlayer
 
+	-- ปิด setting ลดแลค
+	local SettingsToggle = ReplicatedStorage:WaitForChild("RemoteEvents"):WaitForChild("SettingsToggle")
+
+	local settings = {
+	"DisablePvP",
+	"DisableVFX",
+	"DisableOtherVFX",
+	"RemoveTexture",
+	"RemoveShadows"
+	}
+
+	for _,setting in ipairs(settings) do
+		local current = player:FindFirstChild("Settings")
+		and player.Settings:FindFirstChild(setting)
+
+		if not current or current.Value ~= true then
+			SettingsToggle:FireServer(setting, true)
+		end
+	end
 
 
 task.spawn(function()
