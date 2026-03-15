@@ -6,6 +6,33 @@ local VirtualInputManager = game:GetService("VirtualInputManager")
 
 local player = Players.LocalPlayer
 
+-- ======================
+-- Auto Haki
+-- ======================
+task.spawn(function()
+
+	local ReplicatedStorage = game:GetService("ReplicatedStorage")
+	local remote = ReplicatedStorage:WaitForChild("RemoteEvents"):WaitForChild("HakiRemote")
+
+	local hakiOn = false
+
+	local function enableHaki()
+		if not hakiOn then
+			remote:FireServer("Toggle")
+			hakiOn = true
+		end
+	end
+
+	enableHaki()
+
+	game.Players.LocalPlayer.CharacterAdded:Connect(function()
+		hakiOn = false
+		task.wait(1)
+		enableHaki()
+	end)
+
+end)
+
 	-- ปิด setting ลดแลค
 	local SettingsToggle = ReplicatedStorage:WaitForChild("RemoteEvents"):WaitForChild("SettingsToggle")
 
