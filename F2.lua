@@ -1,5 +1,109 @@
 repeat task.wait(2) until game:IsLoaded()
 
+-- =========================
+-- Inventory Log
+-- =========================
+task.spawn(function()
+
+	local ReplicatedStorage = game:GetService("ReplicatedStorage")
+	local Remote = ReplicatedStorage:WaitForChild("Remotes")
+
+	local targets = {
+		["Aura Crate"] = true,
+		["Cosmetic Crate"] = true,
+		["Mythical Chest"] = true,
+		["Clan Reroll"] = true,
+		["Race Reroll"] = true,
+		["Trait Reroll"] = true,
+		["Chrysalis Sigil"] = true,
+		["Tempest Relic"] = true
+	}
+
+	local priority = {
+		["Aura Crate"] = 1,
+		["Cosmetic Crate"] = 2,
+		["Mythical Chest"] = 3,
+		["Clan Reroll"] = 4,
+		["Race Reroll"] = 5,
+		["Trait Reroll"] = 6,
+		["Chrysalis Sigil"] = 7,
+		["Tempest Relic"] = 8
+	}
+
+	local emojis = {
+		["Aura Crate"] = "✨",
+		["Cosmetic Crate"] = "🎨",
+		["Mythical Chest"] = "💎",
+		["Clan Reroll"] = "🏯",
+		["Race Reroll"] = "🧬",
+		["Trait Reroll"] = "🔁",
+		["Chrysalis Sigil"] = "🦋",
+		["Tempest Relic"] = "🌪️"
+	}
+
+	Remote.UpdateInventory.OnClientEvent:Connect(function(i,v)
+
+		if typeof(v) ~= "table" then
+			return
+		end
+
+		local amounts = {}
+
+		for name in pairs(targets) do
+			amounts[name] = 0
+		end
+
+		for _,item in pairs(v) do
+			if typeof(item) == "table" then
+				
+				local name = item.name
+				local qty = item.quantity
+				
+				if name and qty and targets[name] then
+					amounts[name] = qty
+				end
+				
+			end
+		end
+
+		local found = {}
+
+		for name,_ in pairs(targets) do
+			local emoji = emojis[name] or "📦"
+
+			table.insert(found,{
+				name = name,
+				text = emoji.." "..name.." x"..amounts[name]
+			})
+		end
+
+		table.sort(found,function(a,b)
+			return (priority[a.name] or 999) < (priority[b.name] or 999)
+		end)
+
+		local display = {}
+		for _,v in pairs(found) do
+			table.insert(display,v.text)
+		end
+
+		local message = table.concat(display," , ")
+
+		if _G.Horst_SetDescription then
+			_G.Horst_SetDescription("🎒 Items : "..message)
+		end
+			
+		
+
+	end)
+
+	Remote.RequestInventory:FireServer()
+
+	while task.wait(5) do
+		Remote.RequestInventory:FireServer()
+	end
+
+end)
+
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local VirtualInputManager = game:GetService("VirtualInputManager")
