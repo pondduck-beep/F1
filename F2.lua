@@ -233,25 +233,6 @@ end
 
 while true do
 
-	portal("Starter")
-	task.wait(0.3)
-	fasttp(CFrame.new(174.26943969726562,11.206908226013184,-156.84486389160156))
-	task.wait(2)
-
-	portal("Jungle")
-	task.wait(0.3)
-	fasttp(CFrame.new(-563.8446655273438,-0.874668300151825,400.6252197265625))
-	task.wait(2)
-
-	portal("Desert")
-	task.wait(0.3)
-	fasttp(CFrame.new(-791.0394287109375,-4.222726821899414,-432.0268859863281))
-	task.wait(2)
-
-	portal("Snow")
-	task.wait(0.3)
-	fasttp(CFrame.new(-407.5099792480469,-1.1388468742370605,-990.491455078125))
-	task.wait(2)
 
 	portal("Shibuya")
 	task.wait(0.3)
