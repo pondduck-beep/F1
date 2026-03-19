@@ -1,6 +1,6 @@
 -- ของฟรียังอยากได้อีกมักมากนะมึง
 
-repeat task.wait(0.5) until game:IsLoaded()
+repeat task.wait(2) until game:IsLoaded()
 
 -- =========================
 -- Inventory Log
