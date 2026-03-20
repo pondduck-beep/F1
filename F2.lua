@@ -148,6 +148,7 @@ end)
 	"DisablePvP",
 	"DisableVFX",
 	"DisableOtherVFX",
+	"DisableCutscene",
 	"RemoveTexture",
 	"RemoveShadows"
 	}
@@ -214,10 +215,7 @@ task.spawn(function()
 		VirtualInputManager:SendKeyEvent(true,"X",false,game)
 		task.wait()
 		VirtualInputManager:SendKeyEvent(false,"X",false,game)
-		task.wait(0.5)
-		VirtualInputManager:SendKeyEvent(true,"V",false,game)
-		task.wait()
-		VirtualInputManager:SendKeyEvent(false,"V",false,game)
+
 	
 	end
 
@@ -242,38 +240,45 @@ end
 
 while true do
 
+
 	portal("Shibuya")
 	task.wait(0.5)
 	fasttp(CFrame.new(1400.0594482421875,8.486136436462402,484.9847106933594))
-	task.wait(0.5)
+	task.wait(0.2)
+
+
 
 	portal("HuecoMundo")
 	task.wait(0.5)
 	fasttp(CFrame.new(-369.4567565917969,-0.15934494137763977,1092.5155029296875))
-	task.wait(0.5)
+	task.wait(0.2)
+	fasttp(CFrame.new(-473.532379, -1.771564, 985.299255))
+    task.wait(0.2)
 
 	portal("Shinjuku")
 	task.wait(0.5)
-	fasttp(CFrame.new(-17.37151527404785,1.8984041213989258,-1842.671630859375))
-	task.wait(0.5)
+	fasttp(CFrame.new(-15.459251, 1.898329, -1843.222656))
+    task.wait(0.2)
+    fasttp(CFrame.new(273.684357, -0.831846, -1759.684814))
+    task.wait(0.2)
+    fasttp(CFrame.new(663.039429, 1.883049, -1696.660522))
+    task.wait(0.2)
 
-	fasttp(CFrame.new(666.2935180664062,1.8831005096435547,-1692.1214599609375))
-	task.wait(0.5)
 
 	portal("Slime")
 	task.wait(0.5)
 	fasttp(CFrame.new(-1123.855224609375,13.91822624206543,368.31768798828125))
-	task.wait(0.5)
+	task.wait(0.2)
 
 	portal("Academy")
 	task.wait(0.5)
 	fasttp(CFrame.new(1068.37646484375,1.778355360031128,1277.8568115234375))
-	task.wait(0.5)
+	task.wait(0.2)
 
 	portal("Judgement")
 	task.wait(0.5)
 	fasttp(CFrame.new(-1270.6287841796875,1.177457332611084,-1192.44189453125))
-	task.wait(0.5)
+	task.wait(0.2)
 
 
 
