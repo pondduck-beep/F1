@@ -280,6 +280,16 @@ while true do
 	fasttp(CFrame.new(-1270.6287841796875,1.177457332611084,-1192.44189453125))
 	task.wait(0.2)
 
+		portal("Ninja")
+        task.wait(0.3)
+        fasttp(CFrame.new(-1877.98, 8.51, -736.60, -0.05, -0.00, -1.00, -0.00, 1.00, -0.00, 1.00, 0.00, -0.05))
+        task.wait(0.3)
+
+
+	portal("Lawless")
+        task.wait(0.3)
+        fasttp(CFrame.new(50.10, 0.42, 1817.55, -0.51, 0.00, 0.86, -0.00, 1.00, -0.00, -0.86, -0.00, -0.51))
+        task.wait(0.3)
 
 
 end
